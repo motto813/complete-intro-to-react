@@ -5,7 +5,7 @@
     "prettier/react"
   ],
   "plugins": [
-    "prettier",
+    "prettier"
   ],
   "parserOptions": {
     "ecmaVersion": 2017,
