@@ -14,7 +14,7 @@ const MyFirstComponent = function() {
     ce(MyTitle, { title: 'Game of thrones', color: 'YellowGreen' }),
     ce(MyTitle, { title: 'Stranger Things', color: 'GreenYellow' }),
     ce(MyTitle, { title: 'Rick and Morty', color: 'LimeGreen' }),
-    ce(MyTitle, { title: 'Silicon Valley', color: 'peru' })
+    ce(MyTitle, { title: 'Friends', color: 'peru' })
   );
 };
 
