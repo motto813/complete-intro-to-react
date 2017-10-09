@@ -2,6 +2,7 @@
 
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+// import queryString from "query-string";
 import type { Match } from "react-router-dom";
 import Landing from "./Landing";
 import Search from "./Search";
@@ -15,7 +16,13 @@ const App = () => (
     <div className="app">
       <Switch>
         <Route exact path="/" component={Landing} />
-        <Route path="/search" component={props => <Search shows={preload.shows} {...props} />} />
+        <Route
+          path="/search"
+          component={(props: { match: Match, location: { search: string } }) => {
+            const query = props.location.search ? props.location.search : "";
+            return <Search query={query} shows={preload.shows} {...props} />;
+          }}
+        />
         <Route
           path="/details/:id"
           component={(props: { match: Match }) => {

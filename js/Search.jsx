@@ -1,14 +1,17 @@
 // @flow
 
 import React, { Component } from "react";
+// import { withRouter } from "react-router-dom";
+import queryString from "query-string";
 import ShowCard from "./ShowCard";
 import Header from "./Header";
 
 class Search extends Component {
   state = {
-    searchTerm: ""
+    searchTerm: queryString.parse(this.props.query).term
   };
   props: {
+    query: string,
     shows: Array<Show>
   };
   handleSearchTermChange = (event: SyntheticKeyboardEvent & { target: HTMLInputElement }) => {
