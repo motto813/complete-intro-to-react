@@ -22,10 +22,7 @@ test("Search should render correct amount of shows based on search term", () => 
   // instead of copying code from Search component as seen below:
   // better idea: create a module, test it's behavior, then use that module here
   const showCount = preload.shows.filter(
-    show =>
-      `${show.title} ${show.description}`
-        .toUpperCase()
-        .indexOf(searchWord.toUpperCase()) >= 0
+    show => `${show.title} ${show.description}`.toUpperCase().indexOf(searchWord.toUpperCase()) >= 0
   ).length;
   expect(component.find(ShowCard).length).toEqual(showCount);
 });
