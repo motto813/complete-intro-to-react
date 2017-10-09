@@ -19,7 +19,7 @@ const App = () => (
         <Route
           path="/search"
           component={(props: { match: Match, location: { search: string } }) => {
-            const query = props.location.search ? props.location.search : "";
+            const query = props.location.search;
             return <Search query={query} shows={preload.shows} {...props} />;
           }}
         />
