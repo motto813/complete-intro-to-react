@@ -1,10 +1,12 @@
 // @flow
 
 import React, { Component } from "react";
-// import { withRouter } from "react-router-dom";
+import { createBrowserHistory } from "history";
 import queryString from "query-string";
 import ShowCard from "./ShowCard";
 import Header from "./Header";
+
+const history = createBrowserHistory();
 
 class Search extends Component {
   state = {
@@ -15,7 +17,12 @@ class Search extends Component {
     shows: Array<Show>
   };
   handleSearchTermChange = (event: SyntheticKeyboardEvent & { target: HTMLInputElement }) => {
-    this.setState({ searchTerm: event.target.value });
+    const term = event.target.value;
+    this.setState({ searchTerm: term });
+    history.replace({
+      pathname: "/search",
+      search: `?term=${term}`
+    });
   };
 
   render() {

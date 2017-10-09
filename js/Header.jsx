@@ -12,7 +12,14 @@ const Header = (props: { showSearch?: boolean, searchTerm?: string, handleSearch
   } else {
     utilSpace = (
       <h2>
-        <Link to="/search">Back</Link>
+        <Link
+          to={{
+            pathname: "/search",
+            search: "?term="
+          }}
+        >
+          Back
+        </Link>
       </h2>
     );
   }
