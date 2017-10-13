@@ -8,21 +8,38 @@ import Header from "./Header";
 
 const history = createBrowserHistory();
 
+const queryKey = "?term=";
+
+const replaceHistory = (term: string) => {
+  history.replace({
+    pathname: "/search",
+    search: `${queryKey}${term}`
+  });
+};
+
 class Search extends Component {
-  state = {
-    searchTerm: queryString.parse(this.props.query).term
+  constructor(props: { query: string, shows: Array<Show> }) {
+    super(props);
+    this.state = {
+      searchTerm: ""
+    };
+    this.setSearchTermFromQuery();
+  }
+
+  state: {
+    searchTerm: string
   };
-  props: {
-    query: string,
-    shows: Array<Show>
+
+  setSearchTermFromQuery = () => {
+    if (this.props.query.indexOf(queryKey) > -1) {
+      this.state.searchTerm = queryString.parse(this.props.query).term;
+    }
   };
+
   handleSearchTermChange = (event: SyntheticKeyboardEvent & { target: HTMLInputElement }) => {
     const term = event.target.value;
     this.setState({ searchTerm: term });
-    history.replace({
-      pathname: "/search",
-      search: `?term=${term}`
-    });
+    replaceHistory(term);
   };
 
   render() {
